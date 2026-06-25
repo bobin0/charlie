@@ -30,15 +30,12 @@ body {
   overflow-x: hidden;
 }
 
-/* Hide native cursor on devices with a fine pointer (custom cursor takes over). */
-@media (pointer: fine) {
-  body {
-    cursor: none;
-  }
-  a,
-  button {
-    cursor: none;
-  }
+/* Hide the native cursor ONLY once the custom cursor has mounted (the
+   .custom-cursor class is added to <html> by AnimatedCursor). If JS is
+   disabled or the cursor fails to mount, the native cursor stays visible. */
+html.custom-cursor,
+html.custom-cursor * {
+  cursor: none !important;
 }
 
 /* ----- Custom scrollbar ----- */
